@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EWO-Jd-eM1">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Acronyms-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="AcronymViewController" id="BYZ-38-t0r" customClass="AcronymViewController" customModule="AcronymsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" verticalHuggingPriority="251" placeholder="Search Acronyms" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8AB-dV-Udh">
+                                <rect key="frame" x="0.0" y="91" width="390" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="qXp-Tu-RhV"/>
+                                </connections>
+                            </searchBar>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="har-f4-lly">
+                                <rect key="frame" x="0.0" y="147" width="390" height="697"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="44F-TK-WP6">
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="697"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please start your search." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sxE-hU-EFy">
+                                                <rect key="frame" x="20" y="230.66666666666669" width="350" height="26.333333333333314"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="sxE-hU-EFy" firstAttribute="leading" secondItem="44F-TK-WP6" secondAttribute="leading" constant="20" id="Jxv-AP-qCi"/>
+                                            <constraint firstAttribute="trailing" secondItem="sxE-hU-EFy" secondAttribute="trailing" constant="20" id="ZAo-G4-sZM"/>
+                                            <constraint firstItem="sxE-hU-EFy" firstAttribute="centerY" secondItem="44F-TK-WP6" secondAttribute="centerY" multiplier="0.7" id="ahe-vz-bjX"/>
+                                        </constraints>
+                                    </view>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Sf-Ph-wvC">
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="0.0"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Searching Acronyms..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zgz-KF-D9K">
+                                                <rect key="frame" x="20" y="-13" width="350" height="26.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="zgz-KF-D9K" secondAttribute="trailing" constant="20" id="IqI-tp-7Hj"/>
+                                            <constraint firstItem="zgz-KF-D9K" firstAttribute="centerY" secondItem="8Sf-Ph-wvC" secondAttribute="centerY" multiplier="0.7" id="WAK-1c-g9a"/>
+                                            <constraint firstItem="zgz-KF-D9K" firstAttribute="leading" secondItem="8Sf-Ph-wvC" secondAttribute="leading" constant="20" id="lmc-6n-eRz"/>
+                                        </constraints>
+                                    </view>
+                                    <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="rGv-2u-HWE">
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="0.0"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="BYZ-38-t0r" id="219-Rt-58d"/>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="3fb-7q-7SD"/>
+                                        </connections>
+                                    </tableView>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SGs-Tt-lXL">
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="0.0"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No records found. Please search again." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fTO-p7-eyL">
+                                                <rect key="frame" x="16" y="-26.333333333333329" width="358" height="52.666666666666664"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="fTO-p7-eyL" secondAttribute="trailing" constant="16" id="8g4-MJ-wX3"/>
+                                            <constraint firstItem="fTO-p7-eyL" firstAttribute="centerY" secondItem="SGs-Tt-lXL" secondAttribute="centerY" multiplier="0.7" id="914-X0-7Zf"/>
+                                            <constraint firstItem="fTO-p7-eyL" firstAttribute="leading" secondItem="SGs-Tt-lXL" secondAttribute="leading" constant="16" id="h3S-CJ-LsI"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="8AB-dV-Udh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="5Kk-FE-Oxz"/>
+                            <constraint firstAttribute="bottom" secondItem="har-f4-lly" secondAttribute="bottom" id="CZl-Vb-kZP"/>
+                            <constraint firstItem="har-f4-lly" firstAttribute="top" secondItem="8AB-dV-Udh" secondAttribute="bottom" id="FBv-3G-4i2"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8AB-dV-Udh" secondAttribute="trailing" id="Gei-SC-It9"/>
+                            <constraint firstItem="8AB-dV-Udh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Zwd-Qb-Gd2"/>
+                            <constraint firstItem="har-f4-lly" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="rhO-uE-1kN"/>
+                            <constraint firstItem="har-f4-lly" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xG2-pP-SRE"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Acronyms" id="jqZ-IQ-4yf"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="errorLabel" destination="fTO-p7-eyL" id="hbt-fr-M6l"/>
+                        <outlet property="errorView" destination="SGs-Tt-lXL" id="lLb-5V-ZV1"/>
+                        <outlet property="searchBar" destination="8AB-dV-Udh" id="OMU-ci-hIX"/>
+                        <outlet property="searchStartedView" destination="8Sf-Ph-wvC" id="EYZ-KU-Ykq"/>
+                        <outlet property="startSearchView" destination="44F-TK-WP6" id="LyW-BM-kqJ"/>
+                        <outlet property="tableView" destination="rGv-2u-HWE" id="bbF-Pb-n7K"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1895.3846153846152" y="3.5545023696682461"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="s9c-vf-vaw">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EWO-Jd-eM1" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Kpm-Zu-GBb">
+                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="aZV-SK-b6C"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bh9-0Y-WvN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="966.15384615384608" y="3.5545023696682461"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
