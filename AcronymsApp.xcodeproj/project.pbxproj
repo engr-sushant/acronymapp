@@ -17,10 +17,15 @@
 		C83494D82996144D0089F343 /* AcronymViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83494D72996144D0089F343 /* AcronymViewController.swift */; };
 		C83494DC299616860089F343 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83494DB299616860089F343 /* NetworkManager.swift */; };
 		C83494DE299654210089F343 /* AcronymViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83494DD299654210089F343 /* AcronymViewModelTest.swift */; };
-		C83494DF299654C10089F343 /* AcronymViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83494D52996143C0089F343 /* AcronymViewModel.swift */; };
-		C83494E0299655160089F343 /* Acronym.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83494D3299612D50089F343 /* Acronym.swift */; };
-		C83494E1299658D30089F343 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83494DB299616860089F343 /* NetworkManager.swift */; };
 		C870B70F2999F3E800EA4D88 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C870B70E2999F3E800EA4D88 /* Alert.swift */; };
+		C8FFD345299A19B700093CD9 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FFD344299A19B600093CD9 /* String+Extension.swift */; };
+		C8FFD363299A312A00093CD9 /* success_acronyms_search.json in Resources */ = {isa = PBXBuildFile; fileRef = C8FFD35B299A2BAE00093CD9 /* success_acronyms_search.json */; };
+		C8FFD364299A312D00093CD9 /* failure_acronyms_search.json in Resources */ = {isa = PBXBuildFile; fileRef = C8FFD35F299A2C1D00093CD9 /* failure_acronyms_search.json */; };
+		C8FFD365299A313000093CD9 /* success_noResult_acronyms_search.json in Resources */ = {isa = PBXBuildFile; fileRef = C8FFD361299A2C3700093CD9 /* success_noResult_acronyms_search.json */; };
+		C8FFD366299A313600093CD9 /* MockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FFD34B299A290A00093CD9 /* MockModel.swift */; };
+		C8FFD367299A313A00093CD9 /* JSONUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FFD34C299A290A00093CD9 /* JSONUtility.swift */; };
+		C8FFD368299A313D00093CD9 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FFD34D299A290A00093CD9 /* MockURLSession.swift */; };
+		C8FFD36E299A350800093CD9 /* success_noLFS_acronyms_search.json in Resources */ = {isa = PBXBuildFile; fileRef = C8FFD36C299A350400093CD9 /* success_noLFS_acronyms_search.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +53,14 @@
 		C83494DB299616860089F343 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		C83494DD299654210089F343 /* AcronymViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcronymViewModelTest.swift; sourceTree = "<group>"; };
 		C870B70E2999F3E800EA4D88 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		C8FFD344299A19B600093CD9 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		C8FFD34B299A290A00093CD9 /* MockModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockModel.swift; sourceTree = "<group>"; };
+		C8FFD34C299A290A00093CD9 /* JSONUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONUtility.swift; sourceTree = "<group>"; };
+		C8FFD34D299A290A00093CD9 /* MockURLSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
+		C8FFD35B299A2BAE00093CD9 /* success_acronyms_search.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = success_acronyms_search.json; sourceTree = "<group>"; };
+		C8FFD35F299A2C1D00093CD9 /* failure_acronyms_search.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = failure_acronyms_search.json; sourceTree = "<group>"; };
+		C8FFD361299A2C3700093CD9 /* success_noResult_acronyms_search.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = success_noResult_acronyms_search.json; sourceTree = "<group>"; };
+		C8FFD36C299A350400093CD9 /* success_noLFS_acronyms_search.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = success_noLFS_acronyms_search.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +102,7 @@
 		C834949629960E2A0089F343 /* AcronymsApp */ = {
 			isa = PBXGroup;
 			children = (
+				C8FFD346299A19BD00093CD9 /* Extension */,
 				C83494C829960E4B0089F343 /* AppDelegate */,
 				C83494DA299615E50089F343 /* NetworkManager */,
 				C870B70C2999F3CD00EA4D88 /* Helper */,
@@ -104,6 +118,8 @@
 			isa = PBXGroup;
 			children = (
 				C83494DD299654210089F343 /* AcronymViewModelTest.swift */,
+				C8FFD351299A2A6E00093CD9 /* JSONMocks */,
+				C8FFD34A299A290A00093CD9 /* Utilities */,
 			);
 			path = AcronymsAppTests;
 			sourceTree = "<group>";
@@ -200,6 +216,43 @@
 			path = Alert;
 			sourceTree = "<group>";
 		};
+		C8FFD346299A19BD00093CD9 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C8FFD344299A19B600093CD9 /* String+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		C8FFD34A299A290A00093CD9 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C8FFD34B299A290A00093CD9 /* MockModel.swift */,
+				C8FFD34C299A290A00093CD9 /* JSONUtility.swift */,
+				C8FFD34D299A290A00093CD9 /* MockURLSession.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		C8FFD351299A2A6E00093CD9 /* JSONMocks */ = {
+			isa = PBXGroup;
+			children = (
+				C8FFD352299A2A7400093CD9 /* AcronymsSearch */,
+			);
+			path = JSONMocks;
+			sourceTree = "<group>";
+		};
+		C8FFD352299A2A7400093CD9 /* AcronymsSearch */ = {
+			isa = PBXGroup;
+			children = (
+				C8FFD36C299A350400093CD9 /* success_noLFS_acronyms_search.json */,
+				C8FFD35B299A2BAE00093CD9 /* success_acronyms_search.json */,
+				C8FFD35F299A2C1D00093CD9 /* failure_acronyms_search.json */,
+				C8FFD361299A2C3700093CD9 /* success_noResult_acronyms_search.json */,
+			);
+			path = AcronymsSearch;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -291,6 +344,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8FFD36E299A350800093CD9 /* success_noLFS_acronyms_search.json in Resources */,
+				C8FFD364299A312D00093CD9 /* failure_acronyms_search.json in Resources */,
+				C8FFD365299A313000093CD9 /* success_noResult_acronyms_search.json in Resources */,
+				C8FFD363299A312A00093CD9 /* success_acronyms_search.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +358,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8FFD345299A19B700093CD9 /* String+Extension.swift in Sources */,
 				C83494DC299616860089F343 /* NetworkManager.swift in Sources */,
 				C834949829960E2A0089F343 /* AppDelegate.swift in Sources */,
 				C83494D4299612D50089F343 /* Acronym.swift in Sources */,
@@ -315,9 +373,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C83494E1299658D30089F343 /* NetworkManager.swift in Sources */,
-				C83494DF299654C10089F343 /* AcronymViewModel.swift in Sources */,
-				C83494E0299655160089F343 /* Acronym.swift in Sources */,
+				C8FFD368299A313D00093CD9 /* MockURLSession.swift in Sources */,
+				C8FFD366299A313600093CD9 /* MockModel.swift in Sources */,
+				C8FFD367299A313A00093CD9 /* JSONUtility.swift in Sources */,
 				C83494DE299654210089F343 /* AcronymViewModelTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

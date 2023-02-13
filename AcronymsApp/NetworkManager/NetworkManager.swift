@@ -10,10 +10,6 @@ import Foundation
 typealias APICompletionBlock = ((Data?, URLResponse?, Error?) -> Void)
 typealias APIResultBlock<T: Codable> = (Result<T, CustomError>) -> Void
 
-protocol NetworkCallable {
-    func processAPIRequest<T: Codable>(with urlString: String?, _ type: T.Type, _ completion: APIResultBlock<T>?)
-}
-
 protocol URLSessionProtocol {
     func dataTask(urlRequest: URLRequest, completionHandler: @escaping APICompletionBlock) -> URLSessionDataTaskProtocol
 }
@@ -40,23 +36,28 @@ enum ErrorCode: Int {
 struct CustomError: Error {
     var errorCode: Int
     var errorMsg: String
-    init(_ errorMsg: String = "Something went wrong. Please try again.", errorCode: Int = 999) {
+    init(_ errorMsg: String = .somethingWentWrongMsg, errorCode: Int = 999) {
         self.errorMsg = errorMsg
         self.errorCode = errorCode
     }
 }
 
-final class NetworkManager: NetworkCallable {
+final class NetworkManager {
     private var session: URLSessionProtocol
     
     init(_ session: URLSessionProtocol = URLSession.shared) {
         self.session = session
     }
     
+    /// `NetworkCallable` Protocol confirmance to process the API request for provided URL as `String?`
+    /// `processAPIRequest` is a generic method which accepts the `Codable` types
+    /// - parameters: 1. Requested URL as string `String?`
+    /// - parameters: 2. `T.Type` as codable
+    /// - parameters: 3. `APIResultBlock<T>?`
     func processAPIRequest<T: Codable>(with urlString: String?, _ type: T.Type, _ completion: APIResultBlock<T>?) {
         guard let urlString = urlString,
               let url = URL(string: urlString) else {
-            completion?(.failure(CustomError("URL is invalid.")))
+            completion?(.failure(CustomError(.invalidURLMsg)))
             return
         }
         session.dataTask(urlRequest: URLRequest(url: url)) { data, response, error in
@@ -66,7 +67,7 @@ final class NetworkManager: NetworkCallable {
                 return
             }
             guard let model = dataModels.first else {
-                completion?(.failure(CustomError("No records found. Please search again.",
+                completion?(.failure(CustomError(.noRecordsFoundMsg,
                                                  errorCode: ErrorCode.noResultFound.value)))
                 return
             }
