@@ -54,6 +54,34 @@ final class AcronymViewModelTest: XCTestCase {
         viewModel.setAcronyms(with: noAcronym)
         XCTAssertFalse(viewModel.isAcronymsAvailable)
     }
+    
+    func testIsNotValidInput() {
+        let status1 = viewModel.isValidSearchInput(" ")
+        let status2 = viewModel.isValidSearchInput("@")
+        let status3 = viewModel.isValidSearchInput("#")
+        let status4 = viewModel.isValidSearchInput("$")
+        let status5 = viewModel.isValidSearchInput("&")
+        let status6 = viewModel.isValidSearchInput("0")
+        let status7 = viewModel.isValidSearchInput("9")
+        XCTAssertFalse(status1)
+        XCTAssertFalse(status2)
+        XCTAssertFalse(status3)
+        XCTAssertFalse(status4)
+        XCTAssertFalse(status5)
+        XCTAssertFalse(status6)
+        XCTAssertFalse(status7)
+    }
+    
+    func testIsValidInput() {
+        let status1 = viewModel.isValidSearchInput("a")
+        let status2 = viewModel.isValidSearchInput("A")
+        let status3 = viewModel.isValidSearchInput("z")
+        let status4 = viewModel.isValidSearchInput("Z")
+        XCTAssertTrue(status1)
+        XCTAssertTrue(status2)
+        XCTAssertTrue(status3)
+        XCTAssertTrue(status4)
+    }
 }
 
 private extension AcronymViewModelTest {

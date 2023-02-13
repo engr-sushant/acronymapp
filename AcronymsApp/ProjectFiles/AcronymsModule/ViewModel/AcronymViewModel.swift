@@ -59,6 +59,11 @@ final class AcronymViewModel {
     func getURL(for searchText: String?) -> String? {
         [baseURL, "?sf=\(searchText ?? "")"].joined()
     }
+    
+    func isValidSearchInput(_ text: String) -> Bool {
+        let invalidItems = " !@#$%^&*()_+{}[]|\"<>,.~`/:;?-=\\¥'£•¢1234567890"
+        return !invalidItems.contains(text)
+    }
 }
 
 extension Array {
