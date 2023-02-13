@@ -14,7 +14,6 @@ enum SearchState {
 }
 
 final class AcronymViewController: UIViewController {
-    
     // MARK: - IBOutlets
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
@@ -30,14 +29,16 @@ final class AcronymViewController: UIViewController {
     // MARK: - LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Acronyms"
+        title = .acronymsTitle
         configureView(with: .startYourSearch)
     }
 }
 
 // MARK: - Private Methods
 private extension AcronymViewController {
-    // MARK: - UI Handling
+    /// Handles the differnet UI scenarios for given `SearchState`
+    /// Hide & Show different views.
+    /// - parameters: Current state of search `SearchState`
     func configureView(with state: SearchState) {
         switch state {
         case .startYourSearch:
@@ -63,6 +64,8 @@ private extension AcronymViewController {
         }
     }
     
+    /// Method to find the search result for requested Acronym through view model.
+    /// - parameters: Requested search text as `String?`
     func fetchAcronym(for text: String?) {
         viewModel.searchAcronym(for: text) { [weak self] result in
             guard let self = self else {
@@ -74,7 +77,7 @@ private extension AcronymViewController {
                     if self.viewModel.isAcronymsAvailable {
                         self.configureView(with: .searchResultFound)
                     } else {
-                        self.configureView(with: .errorLabel("No records found. Please search again."))
+                        self.configureView(with: .errorLabel(.noRecordFoundMsg))
                     }
                 case .failure(let error):
                     self.configureView(with: .errorLabel(error.errorMsg))
@@ -83,7 +86,11 @@ private extension AcronymViewController {
         }
     }
     
+    /// Helps in pre-search preparation that handles the unique search technique
+    /// Also known as `DeBounce Search Technique`
+    /// - parameters: Requested search text as `String?`
     func prepareForSearch(with text: String?) {
+        workItem?.cancel()
         let newWorkItem = DispatchWorkItem { [weak self] in
             self?.fetchAcronym(for: text)
         }
@@ -93,7 +100,7 @@ private extension AcronymViewController {
     }
 }
 
-// MARK: - TableView Delegates & DataSource
+// MARK: - TableView Delegates & DataSource methods
 extension AcronymViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.numberOfAcronyms
@@ -103,19 +110,19 @@ extension AcronymViewController: UITableViewDelegate, UITableViewDataSource {
         guard let model = viewModel.acronym(at: indexPath.row) else {
             return UITableViewCell()
         }
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
+        let cell = UITableViewCell(style: .default, reuseIdentifier: .cellIdentifier)
         cell.textLabel?.text = model.lf
         return cell
     }
 }
 
-// MARK: - SearchBar Delegates
+// MARK: - SearchBar Delegates methods
 extension AcronymViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if viewModel.isValidSearchInput(text) {
             return true
         } else {
-            Alert.display(viewController: self, message: "Please enter a valid Search Input.")
+            Alert.display(viewController: self, message: .invalidTextMsg)
             return false
         }
     }
@@ -129,6 +136,9 @@ extension AcronymViewController: UISearchBarDelegate {
         }
     }
     
+    /// Delegate method implementation to by-pass pre-search preparation i.e. `prepareForSearch:`
+    /// when user intentionally clicks on search button
+    /// - parameters: searchBar`UISearchBar`
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         workItem?.cancel()
         fetchAcronym(for: searchBar.text)
