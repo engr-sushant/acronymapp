@@ -139,17 +139,3 @@ final class AcronymViewModelTest: XCTestCase {
         XCTAssertTrue(status4)
     }
 }
-
-private extension AcronymViewModelTest {
-    var noAcronym: [Acronym] {
-        let data = JSONUtility.jsonData(with: "success_noResult_acronyms_search")
-        let model = try? JSONDecoder().decode([Acronym].self, from: data)
-        return model!
-    }
-    
-    var acronyms: [Acronym] {
-        let data = JSONUtility.jsonData(with: "success_acronyms_search")
-        let model = try? JSONDecoder().decode([Acronym].self, from: data)
-        return model!
-    }
-}
